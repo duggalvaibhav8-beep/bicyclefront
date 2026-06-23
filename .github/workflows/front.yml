@@ -37,9 +37,12 @@ jobs:
 
             echo "Installing dependencies..."
             npm install
+            
+             sudo npm install -g http-server
+             pm2 delete app || true
 
             echo "Building Angular app..."
             npm run build -- --configuration production
 
             echo "Restarting PM2 (if used)..."
-            pm2 restart app || pm2 start npm --name "app" -- run start
+            pm2 restart app || pm2 start http-server --name kunj -- /home/ubuntu/bicyclefront/dist/bicycle -p 3015
