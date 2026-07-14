@@ -42,7 +42,7 @@ jobs:
              pm2 delete app || true
 
             echo "Building Angular app..."
-            npm run build -- --configuration production
+            npm run build 
 
             echo "Restarting PM2 (if used)..."
             pm2 restart app || pm2 start http-server --name kunj -- /home/ubuntu/bicyclefront/dist/bicycle -p 3015
